@@ -1,0 +1,23 @@
+{
+  "root": "libs/orders/ui",
+  "sourceRoot": "libs/orders/ui/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/orders/ui/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/orders/ui"],
+      "options": {
+        "jestConfig": "libs/orders/ui/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

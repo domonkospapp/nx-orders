@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-orders/orders/ui": ["libs/orders/ui/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
