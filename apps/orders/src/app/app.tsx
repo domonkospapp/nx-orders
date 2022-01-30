@@ -6,6 +6,7 @@ import {
   Button,
   Grid,
 } from '@mui/material';
+import { ordersCurrencyFormatter } from '@nx-orders/orders/currency-formatter';
 import { Header } from '@nx-orders/orders/ui';
 import { getAllOrders } from '../fake-api';
 import './app.module.scss';
@@ -27,12 +28,14 @@ export function App() {
                   {o.ticker}
                 </Typography>
                 <Typography variant="h5" component="div">
-                  {o.amount}
+                  {o.amount} p
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
                   {o.date}
                 </Typography>
-                <Typography variant="body2">{o.price}</Typography>
+                <Typography variant="body2">
+                  {ordersCurrencyFormatter(o.price, o.currency)}
+                </Typography>
               </CardContent>
               <CardActions>
                 <Button size="small">Open Details</Button>

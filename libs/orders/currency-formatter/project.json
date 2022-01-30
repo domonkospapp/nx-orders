@@ -1,0 +1,23 @@
+{
+  "root": "libs/orders/currency-formatter",
+  "sourceRoot": "libs/orders/currency-formatter/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/orders/currency-formatter/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/orders/currency-formatter"],
+      "options": {
+        "jestConfig": "libs/orders/currency-formatter/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
