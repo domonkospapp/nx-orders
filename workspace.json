@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "api": "apps/api",
+    "api-interfaces": "libs/api/interfaces",
     "orders": "apps/orders",
     "orders-currency-formatter": "libs/orders/currency-formatter",
     "orders-e2e": "apps/orders-e2e",

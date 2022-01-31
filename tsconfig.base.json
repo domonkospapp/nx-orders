@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nx-orders/api/interfaces": ["libs/api/interfaces/src/index.ts"],
       "@nx-orders/orders/currency-formatter": [
         "libs/orders/currency-formatter/src/index.ts"
       ],
