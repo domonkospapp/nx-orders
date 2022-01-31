@@ -46,12 +46,15 @@ export function App() {
           loadingState: 'error',
         })
       );
+    return () => {
+      setState({ data: [], loadingState: 'success' });
+    };
   }, []);
 
   return (
     <>
       <Header title="Orders" />
-      <Grid container spacing={2}>
+      <Grid container spacing={2} data-testid="app-container">
         {state.loadingState === 'loading'
           ? 'loading...'
           : state.loadingState === 'error'

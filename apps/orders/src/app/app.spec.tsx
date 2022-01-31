@@ -1,27 +1,48 @@
-import { render } from '@testing-library/react';
+import {
+  findByTestId,
+  findByText,
+  render,
+  screen,
+} from '@testing-library/react';
+import e from 'express';
 
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './app';
 
+const mockFetch = (data: any) => {
+  return jest.fn().mockImplementation(() => {
+    return Promise.resolve({
+      ok: true,
+      json: () => data,
+    });
+  });
+};
+
 describe('App', () => {
+  beforeEach(() => {
+    window.fetch = mockFetch([]);
+  });
   it('should render successfully', () => {
-    const { baseElement } = render(
+    render(
       <BrowserRouter>
         <App />
       </BrowserRouter>
     );
+    const baseElement = screen.findByTestId('app-container');
 
     expect(baseElement).toBeTruthy();
   });
 
-  it('should have a greeting as the title', () => {
-    const { getByText } = render(
+  it('should have a greeting as the title', async () => {
+    render(
       <BrowserRouter>
         <App />
       </BrowserRouter>
     );
 
-    expect(getByText(/Orders/)).toBeTruthy();
+    const title = await screen.findByText(/Orders/);
+
+    expect(title).toBeTruthy();
   });
 });
