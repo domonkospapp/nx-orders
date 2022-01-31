@@ -1,0 +1,23 @@
+{
+  "root": "libs/orders/order-detail",
+  "sourceRoot": "libs/orders/order-detail/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/orders/order-detail/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/orders/order-detail"],
+      "options": {
+        "jestConfig": "libs/orders/order-detail/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

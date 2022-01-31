@@ -11,14 +11,19 @@ import { Header } from '@nx-orders/orders/ui';
 import { getAllOrders } from '../fake-api';
 import './app.module.scss';
 
+import { Route, useHistory } from 'react-router-dom';
+
+import { OrdersOrderDetail } from '@nx-orders/orders/order-detail';
+
 export function App() {
+  const history = useHistory();
   return (
     <>
       <Header />
       <Grid container spacing={2}>
         {getAllOrders().map((o) => (
-          <Grid item xs={8} margin={2}>
-            <Card key={o.id} className="orderCard">
+          <Grid key={o.id} item xs={8} margin={2}>
+            <Card className="orderCard">
               <CardContent>
                 <Typography
                   sx={{ fontSize: 14 }}
@@ -38,12 +43,18 @@ export function App() {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small">Open Details</Button>
+                <Button
+                  size="small"
+                  onClick={() => history.push(`/orders/${o.id}`)}
+                >
+                  Open Details
+                </Button>
               </CardActions>
             </Card>
           </Grid>
         ))}
       </Grid>
+      <Route path="/orders/:id" component={OrdersOrderDetail} />
     </>
   );
 }

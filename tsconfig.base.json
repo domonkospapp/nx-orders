@@ -18,6 +18,9 @@
       "@nx-orders/orders/currency-formatter": [
         "libs/orders/currency-formatter/src/index.ts"
       ],
+      "@nx-orders/orders/order-detail": [
+        "libs/orders/order-detail/src/index.ts"
+      ],
       "@nx-orders/orders/ui": ["libs/orders/ui/src/index.ts"]
     }
   },
