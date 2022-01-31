@@ -27,24 +27,24 @@ export function App() {
   });
 
   useEffect(() => {
-    setState({
-      ...state,
+    setState((s) => ({
+      ...s,
       loadingState: 'loading',
-    });
+    }));
     fetch('api/orders')
       .then((data) => data.json())
       .then((data) =>
-        setState({
-          ...state,
+        setState((s) => ({
+          ...s,
           data: data,
           loadingState: 'success',
-        })
+        }))
       )
       .catch((error) =>
-        setState({
-          ...state,
+        setState((s) => ({
+          ...s,
           loadingState: 'error',
-        })
+        }))
       );
     return () => {
       setState({ data: [], loadingState: 'success' });

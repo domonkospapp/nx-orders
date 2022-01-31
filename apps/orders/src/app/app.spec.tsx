@@ -1,16 +1,8 @@
-import {
-  findByTestId,
-  findByText,
-  render,
-  screen,
-} from '@testing-library/react';
-import e from 'express';
-
+import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-
 import App from './app';
 
-const mockFetch = (data: any) => {
+const mockFetch = (data: unknown) => {
   return jest.fn().mockImplementation(() => {
     return Promise.resolve({
       ok: true,
