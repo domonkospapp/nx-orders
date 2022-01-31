@@ -7,6 +7,7 @@
     "orders-currency-formatter": "libs/orders/currency-formatter",
     "orders-e2e": "apps/orders-e2e",
     "orders-order-detail": "libs/orders/order-detail",
-    "orders-ui": "libs/orders/ui"
+    "orders-ui": "libs/orders/ui",
+    "orders-ui-e2e": "apps/orders-ui-e2e"
   }
 }
