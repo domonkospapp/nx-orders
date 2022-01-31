@@ -1,4 +1,6 @@
 import { Card, CardContent, Typography } from '@mui/material';
+import { ordersCurrencyFormatter } from '@nx-orders/orders/currency-formatter';
+import { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import './orders-order-detail.module.scss';
 
@@ -9,13 +11,55 @@ type TParams = {
 export type OrdersOrderDetailProps = RouteComponentProps<TParams>;
 
 export function OrdersOrderDetail(props: OrdersOrderDetailProps) {
+  const [state, setState] = useState<{
+    data: any;
+    loadingState: 'success' | 'error' | 'loading';
+  }>({
+    data: {},
+    loadingState: 'success',
+  });
+
+  useEffect(() => {
+    setState({
+      ...state,
+      loadingState: 'loading',
+    });
+    const orderId = props.match.params.id;
+    fetch(`api/orders/${orderId}`)
+      .then((data) => data.json())
+      .then((data) =>
+        setState({
+          ...state,
+          data: data,
+          loadingState: 'success',
+        })
+      )
+      .catch((error) =>
+        setState({
+          ...state,
+          loadingState: 'error',
+        })
+      );
+  }, [props.match.params.id]);
+
   return (
     <div className="conainer">
-      <Card>
-        <CardContent>
-          <Typography>{props.match.params.id}</Typography>
-        </CardContent>
-      </Card>
+      {state.loadingState === 'loading' ? (
+        'loading...'
+      ) : state.loadingState === 'error' ? (
+        'Error!'
+      ) : (
+        <Card>
+          <CardContent>
+            <Typography>{`TICKER:${
+              state.data.ticker
+            } PRICE:${ordersCurrencyFormatter(
+              state.data.price,
+              state.data.currency
+            )}`}</Typography>
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 }
