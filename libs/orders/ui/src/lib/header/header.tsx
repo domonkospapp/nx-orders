@@ -10,7 +10,9 @@ import './header.module.scss';
 import MenuIcon from '@mui/icons-material/Menu';
 
 /* eslint-disable-next-line */
-export interface HeaderProps {}
+export interface HeaderProps {
+  title: string;
+}
 
 export function Header(props: HeaderProps) {
   return (
@@ -27,7 +29,7 @@ export function Header(props: HeaderProps) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Orders
+            {props.title}
           </Typography>
           <Button color="inherit">Logout</Button>
         </Toolbar>

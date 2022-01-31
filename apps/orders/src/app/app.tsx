@@ -50,7 +50,7 @@ export function App() {
 
   return (
     <>
-      <Header />
+      <Header title="Orders" />
       <Grid container spacing={2}>
         {state.loadingState === 'loading'
           ? 'loading...'
