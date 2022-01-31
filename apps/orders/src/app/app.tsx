@@ -14,11 +14,12 @@ import { Route, useHistory } from 'react-router-dom';
 
 import { OrdersOrderDetail } from '@nx-orders/orders/order-detail';
 import { useEffect, useState } from 'react';
+import { Order } from '@nx-orders/api/interfaces';
 
 export function App() {
   const history = useHistory();
   const [state, setState] = useState<{
-    data: any[];
+    data: Order[];
     loadingState: 'success' | 'error' | 'loading';
   }>({
     data: [],

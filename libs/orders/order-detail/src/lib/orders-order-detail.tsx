@@ -1,4 +1,5 @@
 import { Card, CardContent, Typography } from '@mui/material';
+import { Order } from '@nx-orders/api/interfaces';
 import { ordersCurrencyFormatter } from '@nx-orders/orders/currency-formatter';
 import { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
@@ -12,10 +13,10 @@ export type OrdersOrderDetailProps = RouteComponentProps<TParams>;
 
 export function OrdersOrderDetail(props: OrdersOrderDetailProps) {
   const [state, setState] = useState<{
-    data: any;
+    data: Order | null;
     loadingState: 'success' | 'error' | 'loading';
   }>({
-    data: {},
+    data: null,
     loadingState: 'success',
   });
 
@@ -51,12 +52,10 @@ export function OrdersOrderDetail(props: OrdersOrderDetailProps) {
       ) : (
         <Card>
           <CardContent>
-            <Typography>{`TICKER:${
-              state.data.ticker
-            } PRICE:${ordersCurrencyFormatter(
-              state.data.price,
-              state.data.currency
-            )}`}</Typography>
+            <Typography>{`TICKER:${state.data?.ticker} PRICE:${
+              state.data &&
+              ordersCurrencyFormatter(state.data.price, state.data.currency)
+            }`}</Typography>
           </CardContent>
         </Card>
       )}

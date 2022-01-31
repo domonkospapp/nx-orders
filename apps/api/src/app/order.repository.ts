@@ -1,4 +1,6 @@
-const orders = [
+import { Order } from '@nx-orders/api/interfaces';
+
+const orders: Order[] = [
   {
     id: 1,
     ticker: 'TSLA',
